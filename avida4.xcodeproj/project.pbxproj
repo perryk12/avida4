@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -13,7 +13,6 @@
 			buildPhases = (
 			);
 			dependencies = (
-				421ADE39197AE706007EDE79 /* PBXTargetDependency */,
 				42FAF75819488A970013939A /* PBXTargetDependency */,
 			);
 			name = all;
@@ -22,20 +21,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		421ADE31197AE69E007EDE79 /* libea.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256FB131892D689004AB7F9 /* libea.a */; };
-		421ADE37197AE6D3007EDE79 /* logic9_emscript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 421ADE2C197AE625007EDE79 /* logic9_emscript.cpp */; };
 		4256FB141892D689004AB7F9 /* libea.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4256FB131892D689004AB7F9 /* libea.a */; };
 		42B1F263197A9CBF0089F6F5 /* logic9.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42B1F262197A9CBF0089F6F5 /* logic9.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		421ADE38197AE706007EDE79 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4256FAF71892D5EE004AB7F9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 421ADE2D197AE69E007EDE79;
-			remoteInfo = "logic9-emscript";
-		};
 		42FAF75719488A970013939A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4256FAF71892D5EE004AB7F9 /* Project object */;
@@ -46,15 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		421ADE32197AE69E007EDE79 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		4256FAFD1892D5EE004AB7F9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -67,11 +48,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		421ADE2C197AE625007EDE79 /* logic9_emscript.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = logic9_emscript.cpp; sourceTree = "<group>"; };
-		421ADE36197AE69E007EDE79 /* logic9 copy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "logic9 copy"; sourceTree = BUILT_PRODUCTS_DIR; };
-		421ADE3A197BDED3007EDE79 /* emscript.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = emscript.cfg; sourceTree = "<group>"; };
 		421ADE3B197BDED3007EDE79 /* logic9.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = logic9.cfg; sourceTree = "<group>"; };
-		4256FAFF1892D5EE004AB7F9 /* avida4-png-centroid */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "avida4-png-centroid"; path = logic9; sourceTree = BUILT_PRODUCTS_DIR; };
+		4256FAFF1892D5EE004AB7F9 /* logic9 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = logic9; sourceTree = BUILT_PRODUCTS_DIR; };
 		4256FB0D1892D651004AB7F9 /* Jamroot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jamroot; sourceTree = "<group>"; };
 		4256FB131892D689004AB7F9 /* libea.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libea.a; path = ../DerivedData/research/Build/Products/Debug/libea.a; sourceTree = "<group>"; };
 		4279E9CF189AE03A0071EDCA /* libboost_unit_test_framework.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_unit_test_framework.dylib; path = /usr/local/lib/libboost_unit_test_framework.dylib; sourceTree = "<absolute>"; };
@@ -81,14 +59,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		421ADE30197AE69E007EDE79 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				421ADE31197AE69E007EDE79 /* libea.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4256FAFC1892D5EE004AB7F9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -111,7 +81,6 @@
 		423A435C19489AA3004A655B /* src */ = {
 			isa = PBXGroup;
 			children = (
-				421ADE2C197AE625007EDE79 /* logic9_emscript.cpp */,
 				42B1F262197A9CBF0089F6F5 /* logic9.cpp */,
 			);
 			path = src;
@@ -133,8 +102,7 @@
 		4256FB001892D5EE004AB7F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4256FAFF1892D5EE004AB7F9 /* avida4-png-centroid */,
-				421ADE36197AE69E007EDE79 /* logic9 copy */,
+				4256FAFF1892D5EE004AB7F9 /* logic9 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				42B1F261197A9C4D0089F6F5 /* avida4.xcconfig */,
-				421ADE3A197BDED3007EDE79 /* emscript.cfg */,
 				421ADE3B197BDED3007EDE79 /* logic9.cfg */,
 			);
 			path = etc;
@@ -176,23 +143,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		421ADE2D197AE69E007EDE79 /* logic9-emscript */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 421ADE33197AE69E007EDE79 /* Build configuration list for PBXNativeTarget "logic9-emscript" */;
-			buildPhases = (
-				421ADE2E197AE69E007EDE79 /* Sources */,
-				421ADE30197AE69E007EDE79 /* Frameworks */,
-				421ADE32197AE69E007EDE79 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "logic9-emscript";
-			productName = "evocadx-centroid";
-			productReference = 421ADE36197AE69E007EDE79 /* logic9 copy */;
-			productType = "com.apple.product-type.tool";
-		};
 		4256FAFE1892D5EE004AB7F9 /* logic9 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4256FB081892D5EE004AB7F9 /* Build configuration list for PBXNativeTarget "logic9" */;
@@ -207,7 +157,7 @@
 			);
 			name = logic9;
 			productName = "evocadx-centroid";
-			productReference = 4256FAFF1892D5EE004AB7F9 /* avida4-png-centroid */;
+			productReference = 4256FAFF1892D5EE004AB7F9 /* logic9 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -216,14 +166,15 @@
 		4256FAF71892D5EE004AB7F9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Dave Knoester";
 			};
 			buildConfigurationList = 4256FAFA1892D5EE004AB7F9 /* Build configuration list for PBXProject "avida4" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 4256FAF61892D5EE004AB7F9;
@@ -233,20 +184,11 @@
 			targets = (
 				42FAF75119488A8E0013939A /* all */,
 				4256FAFE1892D5EE004AB7F9 /* logic9 */,
-				421ADE2D197AE69E007EDE79 /* logic9-emscript */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		421ADE2E197AE69E007EDE79 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				421ADE37197AE6D3007EDE79 /* logic9_emscript.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4256FAFB1892D5EE004AB7F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,11 +200,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		421ADE39197AE706007EDE79 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 421ADE2D197AE69E007EDE79 /* logic9-emscript */;
-			targetProxy = 421ADE38197AE706007EDE79 /* PBXContainerItemProxy */;
-		};
 		42FAF75819488A970013939A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4256FAFE1892D5EE004AB7F9 /* logic9 */;
@@ -271,24 +208,38 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		421ADE34197AE69E007EDE79 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "logic9 copy";
-			};
-			name = Debug;
-		};
-		421ADE35197AE69E007EDE79 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "logic9 copy";
-			};
-			name = Release;
-		};
 		4256FB061892D5EE004AB7F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42B1F261197A9C4D0089F6F5 /* avida4.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 			};
 			name = Debug;
 		};
@@ -296,45 +247,69 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42B1F261197A9C4D0089F6F5 /* avida4.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 			};
 			name = Release;
 		};
 		4256FB091892D5EE004AB7F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 			};
 			name = Debug;
 		};
 		4256FB0A1892D5EE004AB7F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "-";
 			};
 			name = Release;
 		};
 		42FAF75319488A8E0013939A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 			};
 			name = Debug;
 		};
 		42FAF75419488A8E0013939A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		421ADE33197AE69E007EDE79 /* Build configuration list for PBXNativeTarget "logic9-emscript" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				421ADE34197AE69E007EDE79 /* Debug */,
-				421ADE35197AE69E007EDE79 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4256FAFA1892D5EE004AB7F9 /* Build configuration list for PBXProject "avida4" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

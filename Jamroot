@@ -17,10 +17,4 @@ exe avida-logic9 :
     /libea//libea_runner
     : <link>static ;
 
-exe avida-logic9-emscript :
-    src/logic9_emscript.cpp
-    /libea//libea
-    : <link>static <define>LIBEA_CHECKPOINT_OFF
-    ;
-
 install dist : avida-logic9 : <location>$(HOME)/bin ;
