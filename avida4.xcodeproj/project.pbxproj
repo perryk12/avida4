@@ -14,6 +14,7 @@
 			);
 			dependencies = (
 				42FAF75819488A970013939A /* PBXTargetDependency */,
+				A6668B6323461F5D00568DF7 /* PBXTargetDependency */,
 			);
 			name = all;
 			productName = all;
@@ -34,6 +35,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4256FAFE1892D5EE004AB7F9;
 			remoteInfo = "evocadx-png-centroid";
+		};
+		A6668B6223461F5D00568DF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4256FAF71892D5EE004AB7F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E68572D234548FB00F4B693;
+			remoteInfo = mt;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -259,6 +267,11 @@
 			isa = PBXTargetDependency;
 			target = 4256FAFE1892D5EE004AB7F9 /* logic9 */;
 			targetProxy = 42FAF75719488A970013939A /* PBXContainerItemProxy */;
+		};
+		A6668B6323461F5D00568DF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3E68572D234548FB00F4B693 /* mt */;
+			targetProxy = A6668B6223461F5D00568DF7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
