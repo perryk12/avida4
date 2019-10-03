@@ -17,11 +17,8 @@ exe avida-logic9 :
     /libea//libea_runner
     : <link>static ;
 
-install dist : avida-logic9 : <location>$(HOME)/bin ;
-
 exe mt :
     src/mt.cpp
     /libea//libea_runner
     : <link>static ;
 
-install dist : mt : <location>$(HOME)/bin ;
