@@ -64,6 +64,8 @@
 		3E68572B234548BA00F4B693 /* gls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gls.h; sourceTree = "<group>"; };
 		3E68572C234548CA00F4B693 /* mt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mt.cpp; sourceTree = "<group>"; };
 		3E685736234548FB00F4B693 /* mt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mt; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E6B0D0B234BABF10068A05C /* major_transitions.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = major_transitions.cfg; sourceTree = "<group>"; };
+		3E6B0D0C234BACE30068A05C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		421ADE3B197BDED3007EDE79 /* logic9.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = logic9.cfg; sourceTree = "<group>"; };
 		4256FAFF1892D5EE004AB7F9 /* logic9 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = logic9; sourceTree = BUILT_PRODUCTS_DIR; };
 		4256FB0D1892D651004AB7F9 /* Jamroot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jamroot; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				4256FB0D1892D651004AB7F9 /* Jamroot */,
+				3E6B0D0C234BACE30068A05C /* README.md */,
 				4256FB0B1892D651004AB7F9 /* etc */,
 				423A435619489AA3004A655B /* include */,
 				4256FB151892D6BE004AB7F9 /* lib */,
@@ -141,6 +144,7 @@
 			children = (
 				42B1F261197A9C4D0089F6F5 /* avida4.xcconfig */,
 				421ADE3B197BDED3007EDE79 /* logic9.cfg */,
+				3E6B0D0B234BABF10068A05C /* major_transitions.cfg */,
 			);
 			path = etc;
 			sourceTree = "<group>";

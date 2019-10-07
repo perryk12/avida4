@@ -23,6 +23,8 @@ struct lifecycle : public default_lifecycle {
             return;
         }
         
+        /* These are the instructions available. The ones common to most of Avida are defined in:
+         ealib/libea/include/ea/digital_evolution/instruction_set.h */
         using namespace instructions;
         append_isa<nop_a>(0,ea);
         append_isa<nop_b>(0,ea);
@@ -37,25 +39,37 @@ struct lifecycle : public default_lifecycle {
         append_isa<swap>(ea);
         append_isa<inc>(ea);
         append_isa<dec>(ea);
+        // communication
+        // send message
         append_isa<tx_msg>(ea);
         append_isa<tx_msg_check_task>(ea);
+        // receive message
         append_isa<rx_msg>(ea);
+        // broadcast message
         append_isa<bc_msg>(ea);
-        //append_isa<bc_msg_check_task>(ea);
+        append_isa<bc_msg_check_task>(ea);
         append_isa<rotate>(ea);
         append_isa<rotate_cw>(ea);
         append_isa<rotate_ccw>(ea);
         append_isa<if_less>(ea);
         append_isa<h_alloc>(ea);
         append_isa<h_copy>(ea);
+        // divide producing a cell
         append_isa<h_divide_local>(ea);
+        // take in inputs from the environment -- fixed inputs means the same numbers.
         append_isa<fixed_input>(ea);
         append_isa<output>(ea);
+        
+        // used for multicell / organism replication
         append_isa<donate_res_to_group>(ea);
         append_isa<if_equal>(ea);
         append_isa<if_not_equal>(ea);
         append_isa<jump_head>(ea);
         append_isa<is_neighbor>(ea);
+        /* Divide producing another organism. For this to happen the organism (or group) must
+         have acquired XXX resources. How this works: the cells perform tasks. Tasks gain resources.
+         These reosources belong to the cell until they donate them to the organism (group) see
+         above instruction donate_res_to_group. */
         append_isa<h_divide_remote>(ea);
         append_isa<become_soma>(ea);
         append_isa<if_germ>(ea);
@@ -75,7 +89,8 @@ struct lifecycle : public default_lifecycle {
         typedef typename EA::resource_ptr_type resource_ptr_type;
         
         // Add tasks -- all of the additive values are set to 0 since individual cell's don't change their
-        // execution speed
+        // execution speed. We are just using tasks to give the cells resources that can be used
+        // for replication.
         task_ptr_type task_not = make_task<tasks::task_not,catalysts::additive<0> >("not", ea);
         task_ptr_type task_nand = make_task<tasks::task_nand,catalysts::additive<0> >("nand", ea);
         task_ptr_type task_and = make_task<tasks::task_and,catalysts::additive<0> >("and", ea);
@@ -103,6 +118,7 @@ struct lifecycle : public default_lifecycle {
         resource_ptr_type resH = make_resource("resH", init_amt, inflow, outflow, frac, ea);
         resource_ptr_type resI = make_resource("resI", init_amt, inflow, outflow, frac, ea);
         
+        // Set the mutagenic effects of each task.
         put<TASK_MUTATION_MULT>(get<NOT_MUTATION_MULT>(ea), *task_not);
         put<TASK_MUTATION_MULT>(get<NAND_MUTATION_MULT>(ea), *task_nand);
         put<TASK_MUTATION_MULT>(get<AND_MUTATION_MULT>(ea), *task_and);
@@ -123,12 +139,12 @@ struct lifecycle : public default_lifecycle {
         task_xor->consumes(resH);
         task_equals->consumes(resI);
         
-        
-        
     }
     
 };
 
+
+/* This code is necessary for line of descent tracking. */
 template <typename T>
 struct subpop_trait : subpopulation_founder_trait<T>, fitness_trait<T> {
     typedef subpopulation_founder_trait<T> parent1_type;
@@ -143,18 +159,18 @@ struct subpop_trait : subpopulation_founder_trait<T>, fitness_trait<T> {
 
 
 
-
+/* This defines the organism, which is a group of cells. */
 typedef digital_evolution
 < lifecycle
 , recombination::asexual
 , round_robin
-, multibirth_selfrep_not_remote_ancestor // the ancestor does one task repeatedly until it replicate and form another organism
+, multibirth_selfrep_not_remote_ancestor // the ancestor does one task repeatedly until it replicate and form another organism. You can find it in multibirth_selfrep_not_remote_ancestor.h
 , empty_facing_neighbor   // Kate - this controls whether a cell can replicate over another cell
 , dont_stop
 , generate_single_ancestor
 > sea_type;
 
-
+/* This defines our population of organisms. */
 typedef metapopulation
 < sea_type
 , quiet_nan
@@ -228,10 +244,6 @@ public:
         
         add_option<ARCHIVE_INPUT>(this);
         add_option<ARCHIVE_OUTPUT>(this);
-/*add_option<ARCHIVE_MARK>(this);
-#        add_option<ARCHIVE_OUTPUT_SIZE>(this);
-#       add_option<LOD_START_ANALYSIS>(this);
-#        add_option<LOD_END_ANALYSIS>(this);*/
     }
     
     virtual void gather_tools() {
@@ -252,8 +264,6 @@ public:
         add_event<datafiles::mrca_lineage>(ea);
         add_event<subpopulation_founder_event>(ea);
         add_event<task_performed_tracking>(ea);
-
-        
         
     }
 };
