@@ -8,7 +8,7 @@ project :
     <include>./include
     ;
 
-use-project /libea : ../ealib/libea ;
+use-project /libea : ../../tools/ealib/libea ;
 
 import testing ;
 
