@@ -8,7 +8,7 @@ project :
     <include>./include
     ;
 
-use-project /libea : /Users/kgskocelas/Dropbox/Academic/Lab/Research/tools/ealib/libea ;
+use-project /libea : ../ealib/libea ;
 
 import testing ;
 
