@@ -15,14 +15,14 @@ using namespace ealib;
 
 //! Configuration object for an EA.
 struct lifecycle : public default_lifecycle {
-    
+
     //! Called as the final step of EA construction (must not depend on configuration parameters)
     template <typename EA>
     void after_initialization(EA& ea) {
         if(ea.isa().size()) {
             return;
         }
-        
+
         /* These are the instructions available. The ones common to most of Avida are defined in:
          ealib/libea/include/ea/digital_evolution/instruction_set.h */
         using namespace instructions;
@@ -59,7 +59,7 @@ struct lifecycle : public default_lifecycle {
         // take in inputs from the environment -- fixed inputs means the same numbers.
         append_isa<fixed_input>(ea);
         append_isa<output>(ea);
-        
+
         // used for multicell / organism replication
         append_isa<donate_res_to_group>(ea);
         append_isa<if_equal>(ea);
@@ -76,18 +76,18 @@ struct lifecycle : public default_lifecycle {
         append_isa<if_soma>(ea);
         append_isa<if_res_more_than_thresh>(ea);
         append_isa<if_res_less_than_thresh>(ea);
-        
+
         add_event<task_resource_consumption>(ea);
         add_event<task_switching_cost>(ea);
-        
-        
+
+
         add_event<ts_birth_event>(ea);
         add_event<task_mutagenesis>(ea); // <- this event mutates genomes when tasks are performed
         add_event<gs_inherit_event>(ea); // <- this event controls the germ/soma state being inherited
-        
+
         typedef typename EA::task_library_type::task_ptr_type task_ptr_type;
         typedef typename EA::resource_ptr_type resource_ptr_type;
-        
+
         // Add tasks -- all of the additive values are set to 0 since individual cell's don't change their
         // execution speed. We are just using tasks to give the cells resources that can be used
         // for replication.
@@ -100,13 +100,13 @@ struct lifecycle : public default_lifecycle {
         task_ptr_type task_nor = make_task<tasks::task_nor,catalysts::additive<0> >("nor", ea);
         task_ptr_type task_xor = make_task<tasks::task_xor,catalysts::additive<0> >("xor", ea);
         task_ptr_type task_equals = make_task<tasks::task_equals,catalysts::additive<0> >("equals", ea);
-        
+
         // initial amount (unit), inflow (unit), outflow (percentage), percent consumed, ea
         double init_amt = get<RES_INITIAL_AMOUNT>(ea, 0);
         double inflow = get<RES_INFLOW_AMOUNT>(ea,0);
         double outflow = get<RES_OUTFLOW_FRACTION>(ea,0);
         double frac = get<RES_FRACTION_CONSUMED>(ea,0);
-        
+
         // initial amount (unit), inflow (unit), outflow (percentage), percent consumed, ea
         resource_ptr_type resA = make_resource("resA", init_amt, inflow, outflow, frac, ea);
         resource_ptr_type resB = make_resource("resB", init_amt, inflow, outflow, frac, ea);
@@ -117,7 +117,7 @@ struct lifecycle : public default_lifecycle {
         resource_ptr_type resG = make_resource("resG", init_amt, inflow, outflow, frac, ea);
         resource_ptr_type resH = make_resource("resH", init_amt, inflow, outflow, frac, ea);
         resource_ptr_type resI = make_resource("resI", init_amt, inflow, outflow, frac, ea);
-        
+
         // Set the mutagenic effects of each task.
         put<TASK_MUTATION_MULT>(get<NOT_MUTATION_MULT>(ea), *task_not);
         put<TASK_MUTATION_MULT>(get<NAND_MUTATION_MULT>(ea), *task_nand);
@@ -128,7 +128,7 @@ struct lifecycle : public default_lifecycle {
         put<TASK_MUTATION_MULT>(get<NOR_MUTATION_MULT>(ea), *task_nor);
         put<TASK_MUTATION_MULT>(get<XOR_MUTATION_MULT>(ea), *task_xor);
         put<TASK_MUTATION_MULT>(get<EQUALS_MUTATION_MULT>(ea), *task_equals);
-        
+
         task_not->consumes(resA);
         task_nand->consumes(resB);
         task_and->consumes(resC);
@@ -138,9 +138,9 @@ struct lifecycle : public default_lifecycle {
         task_nor->consumes(resG);
         task_xor->consumes(resH);
         task_equals->consumes(resI);
-        
+
     }
-    
+
 };
 
 
@@ -149,7 +149,7 @@ template <typename T>
 struct subpop_trait : subpopulation_founder_trait<T>, fitness_trait<T> {
     typedef subpopulation_founder_trait<T> parent1_type;
     typedef fitness_trait<T> parent2_type;
-    
+
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version) {
         ar & boost::serialization::make_nvp("subpopulation_founder_trait", boost::serialization::base_object<parent1_type>(*this));
@@ -165,7 +165,7 @@ typedef digital_evolution
 , recombination::asexual
 , round_robin
 , multibirth_selfrep_not_remote_ancestor // the ancestor does one task repeatedly until it replicate and form another organism. You can find it in multibirth_selfrep_not_remote_ancestor.h
-, empty_facing_neighbor   // Kate - this controls whether a cell can replicate over another cell
+, faced_neighbor   // Kate - this controls whether a cell can replicate over another cell
 , dont_stop
 , generate_single_ancestor
 > sea_type;
@@ -209,18 +209,18 @@ public:
         add_option<RECORDING_PERIOD>(this);
         add_option<MUTATION_UNIFORM_INT_MIN>(this);
         add_option<MUTATION_UNIFORM_INT_MAX>(this); // must be the number of instructions used. Otherwise if > errors.
-        
+
         add_option<ANALYSIS_INPUT>(this);
-        
-        
+
+
         // ts specific options
         add_option<TASK_SWITCHING_COST>(this); // set to 0 for mt projects, but useful if you want to study task switching
         add_option<GERM_MUTATION_PER_SITE_P>(this); // the mutation rate used for organismal replication
         add_option<GROUP_REP_THRESHOLD>(this); // the number of resources required for a group (really an organism) to replicate
-        
+
         // Austin - this is the config that when raised high enough results in multicells reverting to unicells
         add_option<IND_REP_THRESHOLD>(this); // the number of resources required for an individual (cell) to replicate
-        
+
         // dirty work mutation stuff
         add_option<TASK_MUTATION_PER_SITE_P>(this); // the base rate of mutations for a task
         // each task has it's own mutation rate which is the base rate * its multiplication rate
@@ -234,37 +234,37 @@ public:
         add_option<NOR_MUTATION_MULT>(this);
         add_option<XOR_MUTATION_MULT>(this);
         add_option<EQUALS_MUTATION_MULT>(this);
-        
+
         add_option<RES_INITIAL_AMOUNT>(this);
         add_option<RES_INFLOW_AMOUNT>(this);
         add_option<RES_OUTFLOW_FRACTION>(this);
         add_option<RES_FRACTION_CONSUMED>(this);
         add_option<COST_RAMP>(this);
         add_option<COST_START_UPDATE>(this);
-        
+
         add_option<ARCHIVE_INPUT>(this);
         add_option<ARCHIVE_OUTPUT>(this);
     }
-    
+
     virtual void gather_tools() {
         // these are examples for when you need tools - they can be used to reload populations, reload
         // line of descents and then perform further analyses.
-        
+
         //add_tool<movie>(this);
         //add_tool<ealib::analysis::lod_knockouts>(this);
 
-        
+
     }
-    
+
     virtual void gather_events(EA& ea) {
         add_event<mt_gls_propagule>(ea); // this event defines how organism replication occurs.
-        
+
         // this is used for line of descent tracking. It's memory expensive. Normally I run with 1 gig. If
         // I use LOD - it ups it to 4 gigs.
         add_event<datafiles::mrca_lineage>(ea);
         add_event<subpopulation_founder_event>(ea);
         add_event<task_performed_tracking>(ea);
-        
+
     }
 };
 LIBEA_CMDLINE_INSTANCE(mea_type, cli);
