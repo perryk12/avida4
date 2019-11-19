@@ -261,7 +261,7 @@ DIGEVO_INSTRUCTION_DECL(h_divide_multicell) {
 
 
 
-//! Performs multicell replication using germ lines. One cells is selected, mutated, and then used to create the appropriate number of cells. Thus, the starting multicell offspring is clonal.
+//! Performs multicell replication using germ lines. One cell is selected, mutated, and then used to create the appropriate number of cells. Thus, the starting multicell offspring is clonal.
 template <typename MEA>
 struct mt_gls_propagule : end_of_update_event<MEA> {
     //! Constructor.
@@ -270,6 +270,7 @@ struct mt_gls_propagule : end_of_update_event<MEA> {
         .add_field("mean_rep_time")
         .add_field("mean_res")
         .add_field("mean_multicell_size")
+//        .add_field("mean_mc_tissue_births") // mean number of individual cell births within multicells FIXME Kate
         .add_field("mean_germ_num")
         .add_field("mean_pop_num")
         .add_field("mean_germ_percent")
@@ -334,17 +335,20 @@ struct mt_gls_propagule : end_of_update_event<MEA> {
                 if ((mea.current_update() % 100) == 0) {
                     
                     int alive_count = 0;
+//                    int birth_count = 0; //FIXME Kate - never updated
                     
                     for(typename propagule_type::iterator j=i->population().begin(); j!=i->population().end(); ++j) {
                         if ((*j)->alive()) {
                             alive_count++;
                         }
+                        //FIXME Kate - get birth_count for each multicell in the population
                         
                     }
                     
                     multicell_rep.push_back(get<MULTICELL_REP_TIME>(*i,0));
                     multicell_res.push_back(get<GROUP_RESOURCE_UNITS>(*i,0));
                     multicell_size.push_back(alive_count);
+//                    multicell_tissue_births.push_back(birth_count); //FIXME Kate
                     
                     if (alive_count == 1) {
                         count_uni += 1;
@@ -496,9 +500,11 @@ struct mt_gls_propagule : end_of_update_event<MEA> {
                 _df.write(std::accumulate(multicell_rep.begin(), multicell_rep.end(), 0.0)/multicell_rep.size())
                 .write(std::accumulate(multicell_res.begin(), multicell_res.end(), 0.0)/multicell_res.size())
                 .write(std::accumulate(multicell_size.begin(), multicell_size.end(), 0.0)/multicell_size.size());
+//                .write(std::accumulate(multicell_tissue_births.begin(), multicell_tissue_births.end(), 0.0)/multicell_tissue_births.size()); //FIXME Kate - what does this line mean??
             } else {
                 _df.write(0.0)
                 .write(0.0)
+//                .write(0.0) // FIXME Kate
                 .write(0.0);
             }
             
@@ -565,6 +571,7 @@ struct mt_gls_propagule : end_of_update_event<MEA> {
             multicell_rep.clear();
             multicell_res.clear();
             multicell_size.clear();
+            multicell_tissue_births.clear(); //FIXME Kate
             germ_num.clear();
             germ_percent.clear();
             pop_num.clear();
@@ -585,6 +592,7 @@ struct mt_gls_propagule : end_of_update_event<MEA> {
     std::deque<double> multicell_rep;
     std::deque<double> multicell_res;
     std::deque<double> multicell_size;
+//    std::deque<double> multicell_tissue_births; //FIXME Kate
     std::deque<double> germ_num;
     std::deque<double> germ_percent;
     std::deque<double> pop_num;
