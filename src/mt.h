@@ -571,7 +571,7 @@ struct mt_gls_propagule : end_of_update_event<MEA> {
             multicell_rep.clear();
             multicell_res.clear();
             multicell_size.clear();
-            multicell_tissue_births.clear(); //FIXME Kate
+//            multicell_tissue_births.clear(); //FIXME Kate
             germ_num.clear();
             germ_percent.clear();
             pop_num.clear();
