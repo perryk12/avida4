@@ -165,7 +165,7 @@ typedef digital_evolution
 , recombination::asexual
 , round_robin
 , multibirth_selfrep_not_remote_ancestor // the ancestor does one task repeatedly until it replicate and form another organism. You can find it in multibirth_selfrep_not_remote_ancestor.h
-, faced_neighbor   // Kate - this controls whether a cell can replicate over another cell
+, empty_facing_neighbor   // Kate - this controls whether a cell can replicate over another cell
 , dont_stop
 , generate_single_ancestor
 > sea_type;
