@@ -167,8 +167,8 @@ typedef digital_evolution
 , multibirth_selfrep_not_remote_ancestor // the ancestor does one task repeatedly until it replicate and form another organism. You can find it in multibirth_selfrep_not_remote_ancestor.h
 
 // Kate - this controls whether a cell can replicate over another cell
-, empty_facing_neighbor   // use for control
-//, faced_neighbor   // use for rogue cell treatment
+//, empty_facing_neighbor   // use for control
+, faced_neighbor   // use for rogue cell treatment
 
 , generate_single_ancestor
 > sea_type;
