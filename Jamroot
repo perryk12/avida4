@@ -17,8 +17,12 @@ exe avida-logic9 :
     /libea//libea_runner
     : <link>static ;
 
-exe mt :
-    src/mt.cpp
+exe mt_treat :
+    src/mt_treat.cpp
     /libea//libea_runner
     : <link>static ;
 
+exe mt_control :
+    src/mt_control.cpp
+    /libea//libea_runner
+    : <link>static ;
